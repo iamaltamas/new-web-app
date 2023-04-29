@@ -8,8 +8,8 @@ const Rout = () => {
     
         <Routes>
            <Route path="/" element={<Login />} />
-           <Route  path="signIn" element={<SignIn />} />
-           <Route path="dashboard" element={<Dashboard />} />
+           <Route  path="/signIn" element={<SignIn />} />
+           <Route path="/dashboard" element={<Dashboard />} />
            <Redirect to="signIn"/>
         </Routes>
   

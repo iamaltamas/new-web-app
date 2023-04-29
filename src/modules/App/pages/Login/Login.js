@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button,} from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
@@ -7,14 +7,20 @@ import './Login.css'
 
 
 const Login = () => {
+    const navigate = useNavigate();
 const [user,setUser] = useState({
     username:'',
     password:''
 })
 
-    const navigate = useNavigate();
+useEffect(()=>{
+   if(window.localStorage.getItem("user-token")){
+    navigate("/dashboard")
+   }
+},[])
+
     const gotoSignIn = () => {
-        navigate('signIn')
+        navigate('/signIn')
     }
     const loginHandle = (keyName,keyValue) => {
         const update = {...user}
@@ -23,7 +29,7 @@ const [user,setUser] = useState({
     }
     const submitHandle = async () => {
         let item = {...user}
-        const r = await fetch("https://dummyjson.com/auth/login",{
+        await fetch("https://dummyjson.com/auth/login",{
             method:"POST",
             headers:{
                 "Content-Type":"application/json",
@@ -32,7 +38,7 @@ const [user,setUser] = useState({
             body:JSON.stringify(item),     
         }).then((response)=>response.json())
         .then((res)=>{
-            console.log("res",res)
+           window.localStorage.setItem('user-token',res?.token)
         })
     }
     return (
