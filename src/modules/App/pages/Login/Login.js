@@ -1,9 +1,17 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Form, input } from 'react-bootstrap';
+import { useNavigate  } from 'react-router-dom';
 import './Login.css'
 
-export const Login = () => {
+
+
+ const Login = () => {
+
+    const navigate = useNavigate ();
+  const gotoSigin =()=>{
+    navigate('sigin')
+  }
     return (
         <div className='login-body'>
             <div className='center-item'>
@@ -20,7 +28,9 @@ export const Login = () => {
             <div className='center-item'>
                <Button>Login</Button>
             </div>
-            <a href=''>Sign In</a>
+            <Button onClick={gotoSigin}>Sign In</Button>
         </div>
     )
 }
+
+export default Login;
