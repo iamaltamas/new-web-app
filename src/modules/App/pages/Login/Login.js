@@ -17,7 +17,7 @@ useEffect(()=>{
    if(window.localStorage.getItem("user-token")){
     navigate("/dashboard")
    }
-},[])
+},[window.localStorage.getItem("user-token")])
 
     const gotoSignIn = () => {
         navigate('/signIn')
