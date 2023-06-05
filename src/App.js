@@ -10,13 +10,14 @@ import Disabled from './modules/App/pages/Disabled/Disabled'
 import Navbar from './components/Navbar/Navbar'
 import { Provider } from 'react-redux'
 import store from './store'
+import Header from './components/Header/Header'
 const App = () => {
   return (
 
     <div>
       <Provider store={store}>
+        <Header/>
       <BrowserRouter>
-        <Navbar />
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/signIn" element={<SignIn />} />

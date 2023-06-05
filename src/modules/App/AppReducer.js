@@ -11,7 +11,7 @@ const initialState = {
   },
 };
 
-const appReducer = (state = initialState, action) => {
+const AppReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_USER: {
       return {
@@ -42,4 +42,4 @@ const appReducer = (state = initialState, action) => {
   }
 };
 
-export default appReducer;
+export default AppReducer;
